@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import org.json.JSONObject;
 import java.sql.SQLException;
 import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
@@ -27,7 +26,7 @@ public class Connect {
             conn = DriverManager.getConnection(url);
             stmt = conn.createStatement();
             result = null;
-            result = stmt.executeQuery("select * FROM dbo.NFLRankings"); //Change from * to maximise speed and security
+            //result = stmt.executeQuery("select * FROM dbo.NFLRankings"); //Change from * to maximise speed and security
 
 
             int count = 0;
@@ -42,7 +41,8 @@ public class Connect {
 
             conn.close();
         } catch (Exception e) {
-            e.printStackTrace();//access .json file
+			//e.printStackTrace();//access .json file
+			ParseJSON.getJSONFromFile("C:/DEV/nfl-sim/nflranking.json", teams);
         }
 		
 	}
