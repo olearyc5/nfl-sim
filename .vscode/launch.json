@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<nfl-sim>",
+            "request": "launch",
+            "mainClass": "project.nflsim.App",
+            "projectName": "nfl-sim"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Connect<nfl-sim>",
+            "request": "launch",
+            "mainClass": "project.nflsim.Connect",
+            "projectName": "nfl-sim"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-SendEmail<nfl-sim>",
+            "request": "launch",
+            "mainClass": "project.nflsim.SendEmail",
+            "projectName": "nfl-sim"
+        }
+    ]
+}
