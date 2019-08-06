@@ -27,12 +27,34 @@ public class ParseJSON{
 
             JsonArray array = (JsonArray) obj;
 
-            for (int i=0;i<array.size();i++){
-                JsonElement t = array.get(i);
-                JsonObject te = (JsonObject) t;
+            if (array.size() > 33){
 
-                team tm = new team(te.get("team").getAsString(),te.get("code").getAsString(),te.get("team_comp_home").getAsDouble(),te.get("team_comp_away").getAsDouble());
-                teams[i] = tm;
+                //If more than 33 - then schedule
+                for (int i=0;i<array.size();i++){
+
+                    JsonElement t = array.get(i);
+                    JsonObject te = (JsonObject) t;
+
+                    String[] g = {te.get("Gamedate").getAsString(),te.get("AwayCode").getAsString(),te.get("HomeCode").getAsString(),te.get("GameLocation").getAsString()};
+
+                    Connect.createGame(g,te.get("Gameweek").getAsInt());
+                }
+
+
+            }else{
+
+                //If less than 33 - then rankings
+
+                for (int i=0;i<array.size();i++){
+
+                
+
+                    JsonElement t = array.get(i);
+                    JsonObject te = (JsonObject) t;
+
+                    team tm = new team(te.get("team").getAsString(),te.get("code").getAsString(),te.get("team_comp_home").getAsDouble(),te.get("team_comp_away").getAsDouble());
+                    teams[i] = tm;
+                }
             }
 
             //team t = new team(result.getString("team"),result.getString("code"),result.getDouble("team_comp_home"),result.getDouble("team_comp_away"));
