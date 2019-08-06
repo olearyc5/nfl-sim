@@ -90,7 +90,8 @@ public class Connect {
 
             conn.close();
         } catch (Exception e) {
-            e.printStackTrace();
+			//e.printStackTrace();
+			ParseJSON.getJSONFromFile("C:/DEV/nfl-sim/NFLSchedule2019.json", teams);
         }
 		
 	}
