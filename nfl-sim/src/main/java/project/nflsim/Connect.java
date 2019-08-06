@@ -42,8 +42,9 @@ public class Connect {
             conn.close();
         } catch (Exception e) {
 			//e.printStackTrace();//access .json file
-			ParseJSON.getJSONFromFile("C:/DEV/nfl-sim/nflranking.json", teams); //Don't push or pull this line ever
-			ParseJSON.getJSONFromFile("C:/DEV/nfl-sim/nflranking.json", teams); //Don't push or pull this line ever
+			//ParseJSON.getJSONFromFile("C:/DEV/nfl-sim/nflranking.json", teams); //Don't push or pull this line ever
+			ParseJSON.getJSONFromFile("/Users/conoroleary/DEV/nfl-sim/nflranking.json", teams); //Don't push or pull ever
+
         }
 		
 	}
