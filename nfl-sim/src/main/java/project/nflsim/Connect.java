@@ -92,7 +92,9 @@ public class Connect {
             conn.close();
         } catch (Exception e) {
 			//e.printStackTrace();
-			ParseJSON.getJSONFromFile("C:/DEV/nfl-sim/NFLSchedule2019.json", teams);
+			//ParseJSON.getJSONFromFile("C:/DEV/nfl-sim/NFLSchedule2019.json", teams);
+			ParseJSON.getJSONFromFile("/Users/conoroleary/DEV/nfl-sim/NFLSchedule2019.json", teams); //Don't push or pull ever
+
         }
 		
 	}
