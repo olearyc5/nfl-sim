@@ -35,9 +35,9 @@ public class ParseJSON{
                     JsonElement t = array.get(i);
                     JsonObject te = (JsonObject) t;
 
-                    String[] g = {te.get("Gamedate").getAsString(),te.get("AwayCode").getAsString(),te.get("HomeCode").getAsString(),te.get("GameLocation").getAsString()};
+                    String[] g = {te.get("Date").getAsString(),te.get("AwayCode").getAsString(),te.get("HomeCode").getAsString(),te.get("Venue").getAsString()};
 
-                    Connect.createGame(g,te.get("Gameweek").getAsInt());
+                    Connect.createGame(g,te.get("Week").getAsInt());
                 }
 
 
