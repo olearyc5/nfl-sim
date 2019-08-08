@@ -9,6 +9,8 @@ import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
 public class Connect {
 	
+	public static boolean isSQLServer = false;//Check whether on MAC or PAC
+	//public static boolean isSQLServer = true;//Check whether on MAC or PAC
 	static Connection conn = null;
 	static String dbName = "Sports";
     static String serverport="1433";
@@ -42,65 +44,68 @@ public class Connect {
             conn.close();
         } catch (Exception e) {
 			//e.printStackTrace();//access .json file
-			ParseJSON.getJSONFromFile("C:/DEV/nfl-sim/nflranking.json", teams); //Don't push or pull this line ever
-			//ParseJSON.getJSONFromFile("/Users/conoroleary/DEV/nfl-sim/nflranking.json", teams); //Don't push or pull ever
+			//ParseJSON.getJSONFromFile("C:/DEV/nfl-sim/nflranking.json", teams); //Don't push or pull this line ever
+			ParseJSON.getJSONFromFile("/Users/conoroleary/DEV/nfl-sim/nflranking.json", teams); //Don't push or pull ever
 
         }
 		
 	}
 	
 	public static void getSchedule(){
-	
 		
-		try {
-            Class.forName(driver).newInstance();
-            conn = DriverManager.getConnection(url);
-            stmt = conn.createStatement();
-            result = null;
-            result = stmt.executeQuery("select *FROM dbo.NFLSchedule2019");
+		if (isSQLServer){
+			try {
+				Class.forName(driver).newInstance();
+				conn = DriverManager.getConnection(url);
+				stmt = conn.createStatement();
+				result = null;
+				result = stmt.executeQuery("select *FROM dbo.NFLSchedule2019");
 
 
-            //int count = 0;
-        	
-    		while (result.next()) {
-    		 	
-				String[] g = {result.getString("Gamedate"),result.getString("AwayCode"),result.getString("HomeCode"),result.getString("GameLocation")};
+				//int count = 0;
 				
-				createGame (g,result.getInt("Gameweek"));
-				 
-				/*
-    			int h = getTeam(g[2]);
-    			team home = teams[h];
-    			int a = getTeam(g[1]);
-    			team away = teams[a];
-    			
-    			if (!(home.checkEmpty()  || away.checkEmpty())){
-    				
-    				Boolean n = false;
-    				if((g[3].contains("London"))||(g[3].contains("Mexico"))){
-    					n = true;
-    				}
-    				
-    				game gd = new game(result.getInt("Gameweek"), home,away,n);
-    				teams[h].addGame(gd);
-    				teams[a].addGame(gd);
-    				games[count]= gd;
-    				count++;
-    			}else{
-    				System.out.println("Something went wrong.");
+				while (result.next()) {
+					
+					String[] g = {result.getString("Gamedate"),result.getString("AwayCode"),result.getString("HomeCode"),result.getString("GameLocation")};
+					
+					createGame (g,result.getInt("Gameweek"));
+					
+					/*
+					int h = getTeam(g[2]);
+					team home = teams[h];
+					int a = getTeam(g[1]);
+					team away = teams[a];
+					
+					if (!(home.checkEmpty()  || away.checkEmpty())){
+						
+						Boolean n = false;
+						if((g[3].contains("London"))||(g[3].contains("Mexico"))){
+							n = true;
+						}
+						
+						game gd = new game(result.getInt("Gameweek"), home,away,n);
+						teams[h].addGame(gd);
+						teams[a].addGame(gd);
+						games[count]= gd;
+						count++;
+					}else{
+						System.out.println("Something went wrong.");
+					}
+					*/
+
 				}
-				*/
 
-    		}
+				conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+	
+			}
+		}else{
+			//ParseJSON.getJSONFromFile("C:/DEV/nfl-sim/NFLSchedule2019.json", teams);
+			ParseJSON.getJSONFromFile("/Users/conoroleary/DEV/nfl-sim/NFLSchedule2019.json", teams); //Don't push or pull ever
 
-            conn.close();
-        } catch (Exception e) {
-			//e.printStackTrace();
-			ParseJSON.getJSONFromFile("C:/DEV/nfl-sim/NFLSchedule2019.json", teams);
-			//ParseJSON.getJSONFromFile("/Users/conoroleary/DEV/nfl-sim/NFLSchedule2019.json", teams); //Don't push or pull ever
-
-        }
-		
+		}
+			
 	}
 	
 	public static int getTeam(String s){
