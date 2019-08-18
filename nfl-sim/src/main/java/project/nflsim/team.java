@@ -4,6 +4,7 @@ public class team {
 	
 	private String name;
 	private String code;
+	private String timezone; //East, Central, Mountain, West (To add in SQL table / JSON?)
 	private Double home_rank;
 	private Double away_rank;
 	private Double wins;
@@ -15,6 +16,7 @@ public class team {
 	team(){
 		name = "";
 		code = "";
+		timezone = "";
 		home_rank = 0.0;
 		away_rank = 0.0;
 		wins = 0.0;

@@ -8,11 +8,17 @@ public class game {
 	private team away;
 	private Double line;
 	private Boolean neutral;
+	private String time_of_day; //Early,Late, Night
+	private String timezone; //East, Central, Mountain, West
+	
+	//Method to check previous games
 	
 	game(){
 		setWeek(0);
 		home = new team();
 		away = new team();
+		timezone = "";
+		time_of_day = "";
 		line = 0.0;
 		neutral = false;
 	}
@@ -22,6 +28,8 @@ public class game {
 		home = h;
 		away = a;
 		neutral = l;
+		timezone = "";//FIX
+		time_of_day = "";//FIX
 		if(neutral){
 			calcLineNeutral();
 		}else{
