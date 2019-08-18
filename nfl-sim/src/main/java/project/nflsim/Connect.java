@@ -19,7 +19,10 @@ public class Connect {
     static ResultSet result = null;
     static String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     static team teams[] = new team[32];
-    static game games[] = new game[256];
+	static game games[] = new game[256];
+	static String PCfolder = "C:/DEV/nfl-sim/";
+	static String MACfolder = "/Users/conoroleary/DEV/nfl-sim/";
+	static String folder =(isSQLServer == true) ? PCfolder:MACfolder; 
 	
 	public static void makeConnection(){
 		
@@ -44,8 +47,7 @@ public class Connect {
             conn.close();
         } catch (Exception e) {
 			//e.printStackTrace();//access .json file
-			//ParseJSON.getJSONFromFile("C:/DEV/nfl-sim/nflranking.json", teams); //Don't push or pull this line ever
-			ParseJSON.getJSONFromFile("/Users/conoroleary/DEV/nfl-sim/nflranking.json", teams); //Don't push or pull ever
+			ParseJSON.getJSONFromFile(folder + "nflranking.json", teams);
 
         }
 		
@@ -101,11 +103,8 @@ public class Connect {
 	
 			}
 		}else{
-			//ParseJSON.getJSONFromFile("C:/DEV/nfl-sim/NFLSchedule2019.json", teams);
-			ParseJSON.getJSONFromFile("/Users/conoroleary/DEV/nfl-sim/NFLSchedule2019.json", teams); //Don't push or pull ever
-
+			ParseJSON.getJSONFromFile(folder + "NFLSchedule2019.json", teams);
 		}
-			
 	}
 	
 	public static int getTeam(String s){
