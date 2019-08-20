@@ -33,7 +33,7 @@ public class ParseJSON{
                 for (int i=0;i<array.size();i++){
 
                     JsonElement t = array.get(i);
-                    JsonObject te = (JsonObject) t;
+                    JsonObject te = (JsonObject) ((JsonObject) t).get("gameSchedules");
 
                     String[] g = {te.get("Date").getAsString(),te.get("AwayCode").getAsString(),te.get("HomeCode").getAsString(),te.get("Venue").getAsString()};
 
@@ -50,7 +50,7 @@ public class ParseJSON{
                 
 
                     JsonElement t = array.get(i);
-                    JsonObject te = (JsonObject) t;
+                    JsonObject te =  (JsonObject) t;
 
                     team tm = new team(te.get("team").getAsString(),te.get("code").getAsString(),te.get("team_comp_home").getAsDouble(),te.get("team_comp_away").getAsDouble());
                     teams[i] = tm;

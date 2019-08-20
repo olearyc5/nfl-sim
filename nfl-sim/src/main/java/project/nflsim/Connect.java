@@ -104,11 +104,8 @@ public class Connect {
 	
 			}
 		}else{
-
-			//New JSON file to get it from https://feeds.nfl.com/feeds-rs/schedules.json
-
 			//To note - lines url http://lines.sharpfootballanalysis.com/schedule.php?host=SHARPFB&sportnfl&period=0
-			ParseJSON.getJSONFromFile(folder + "NFLSchedule2019.json", teams);
+			ParseJSON.getJSONFromFile("https://feeds.nfl.com/feeds-rs/schedules.json", teams);
 		}
 	}
 	
