@@ -2,6 +2,7 @@ package project.nflsim;
 
 import java.text.DecimalFormat;
 
+@SuppressWarnings("unused")
 public class game {
 	private int week;
 	private team home;

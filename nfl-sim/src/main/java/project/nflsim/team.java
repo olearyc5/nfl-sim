@@ -1,5 +1,6 @@
 package project.nflsim;
 
+@SuppressWarnings("unused")
 public class team {
 	
 	private String name;

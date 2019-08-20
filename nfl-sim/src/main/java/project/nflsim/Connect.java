@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.sql.SQLException;
 import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 
+@SuppressWarnings("unused")
 public class Connect {
 	
 	public static boolean isSQLServer = false;//Check whether on MAC or PAC
