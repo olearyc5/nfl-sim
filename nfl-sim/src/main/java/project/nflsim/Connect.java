@@ -10,8 +10,8 @@ import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 @SuppressWarnings("unused")
 public class Connect {
 	
-	public static boolean isSQLServer = false;//Check whether on MAC or PAC
-	//public static boolean isSQLServer = true;//Check whether on MAC or PAC
+	//public static boolean isSQLServer = false;//Check whether on MAC or PAC
+	public static boolean isSQLServer = true;//Check whether on MAC or PAC
 	static Connection conn = null;
 	static String dbName = "Sports";
     static String serverport="1433";
@@ -56,8 +56,8 @@ public class Connect {
 	}
 	
 	public static void getSchedule(){
-		
-		if (isSQLServer){
+		/*
+		if (!isSQLServer){
 			try {
 				Class.forName(driver).newInstance();
 				conn = DriverManager.getConnection(url);
@@ -96,6 +96,7 @@ public class Connect {
 						System.out.println("Something went wrong.");
 					}
 					*/
+					/*
 
 				}
 
@@ -104,10 +105,10 @@ public class Connect {
 				e.printStackTrace();
 	
 			}
-		}else{
+		}else{*/
 			//To note - lines url http://lines.sharpfootballanalysis.com/schedule.php?host=SHARPFB&sportnfl&period=0
 			ParseJSON.getJSONFromFile("https://feeds.nfl.com/feeds-rs/schedules.json", teams);
-		}
+		//}
 	}
 	
 	public static int getTeam(String s){

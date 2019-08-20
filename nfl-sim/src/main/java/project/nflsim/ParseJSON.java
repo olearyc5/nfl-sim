@@ -21,6 +21,8 @@ public class ParseJSON{
 
         JsonParser JSONParser = new JsonParser();
 
+        //Needs a url connection
+
         try (FileReader reader = new FileReader(file)){
 
             JsonElement obj = JSONParser.parse(reader);
